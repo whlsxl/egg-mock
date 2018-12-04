@@ -9,7 +9,7 @@ describe('test/app/model/device.test.js', () => {
     it('device status has default value & save OK', async () => {
       const device = app.mockDevice();
       console.log(app.server.address());
-      assert(true);
+      assert(app.server.address());
     });
   
   });
