@@ -35,6 +35,7 @@ describe('test/app/controller/home.test.js', () => {
     });
     await app.ready()
     const device = app.mockDevice();
+    console.log(device);
     console.log(app.mockDevice);
     app.httpRequest()
       .get('/')
