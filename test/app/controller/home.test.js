@@ -1,45 +1,20 @@
-// 'use strict';
+'use strict';
 
-// const assert = require('assert');
-// // const { assert } = require('egg-mock/bootstrap');
-// const mm = require('egg-mock');
+const { app, assert } = require('egg-mock/bootstrap');
 
-// describe('test/app/controller/home.test.js', () => {
-//   let app;
-//   beforeEach(() => {
-//     let options = {
-//       workers: 1,
-//       sticky: false,
-//     };
-//     app = mm.cluster(options);
-//   });
+describe('test/app/controller/home.test.js', () => {
+  it('should assert', () => {
+    const pkg = require('../../../package.json');
+    assert(app.config.keys.startsWith(pkg.name));
 
-//   afterEach(() => {
-//     mm.restore();
-//   });
+    // const ctx = app.mockContext({});
+    // yield ctx.service.xx();
+  });
 
-//   // it('should assert', function* () {
-//   //   await app.ready();
-//   //   const pkg = require('../../../package.json');
-//   //   assert(app.config.keys.startsWith(pkg.name));
-
-//   //   // const ctx = app.mockContext({});
-//   //   // yield ctx.service.xx();
-//   //   await app.close();
-//   // });
-
-//   it('should GET /', async () => {
-//     const app = mm.cluster({
-//       workers: 1,
-//       sticky: false,
-//     });
-//     await app.ready()
-//     const device = app.mockDevice();
-    
-//     app.httpRequest()
-//       .get('/')
-//       .expect('hi, egg')
-//       .expect(200);
-//     // await app.close();
-//   });
-// });
+  it('should GET /', () => {
+    return app.httpRequest()
+      .get('/')
+      .expect('hi, egg')
+      .expect(200);
+  });
+});
